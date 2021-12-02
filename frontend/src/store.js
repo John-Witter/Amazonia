@@ -6,6 +6,7 @@ import { featuredProductsReducer, productDetailsReducer, productListReducer } fr
 import { oneReviewReducer, reviewListReducer } from './reducers/reviewReducer';
 import sessionReducer from './reducers/userReducer';
 import usersReducer from './reducers/users';
+import { oneRatingReducer } from './reducers/ratingReducer';
 
 const initialState = {
     cart: {
@@ -21,6 +22,7 @@ const reducer = combineReducers({
     reviewList: reviewListReducer,
     oneReview: oneReviewReducer,
     cart: cartReducer,
+    rating: oneRatingReducer
 })
 
 //this line allows use to connect our redux store to the devtools
