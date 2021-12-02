@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link, useParams } from 'react-router-dom'
 import { detailsProduct } from '../actions/productActions';
 import { createReview, listReviews, myReview } from '../actions/reviewActions';
+import { listAverageRating } from '../actions/ratingActions';
 import LoadingBox from '../components/LoadingBox';
 import MessageBox from '../components/MessageBox';
 import Rating from '../components/Rating';
@@ -32,6 +33,7 @@ export default function ProductScreen(props) {
         dispatch(myReview(productId))
         dispatch(detailsProduct(productId));
         dispatch(listReviews(productId))
+        dispatch(listAverageRating(productId))
 
         if (!reviews.length) {
             setState(false)
