@@ -36,7 +36,7 @@ export default function ProductScreen(props) {
         if (!reviews.length) {
             setState(false)
         }
-    }, [dispatch, productId])
+    }, [dispatch, productId, currentUser])
 
     const createRev = async (e) => {
         e.preventDefault();

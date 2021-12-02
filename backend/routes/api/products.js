@@ -62,15 +62,21 @@ router.get('/:productId/review', restoreUser, asyncHandler(async function (req, 
     // const userId = req.user.id
     // const { userId } = req.session.auth
     // const userId = 2;
-    const { user } = req;
-    const review = await Review.findOne({
-        where: {
-            productId,
-            userId: user.id
-        }
-    })
-
-    return res.json(review)
+    try {
+        const { user } = req;
+        const review = await Review.findOne({
+            where: {
+                productId,
+                userId: user.id
+            }
+        })
+    
+        return res.json(review)
+        
+    } catch (error) {
+        return;
+        console.log("ERROR: /:productId/review:", error);
+    }
 
 }))
 
