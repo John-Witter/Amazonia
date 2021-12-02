@@ -1,0 +1,28 @@
+.form_wrapper {
+  border: 2px solid black;
+  width: 30%;
+  background-color: #203040;
+  color: white;
+  border-radius: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 500px;
+}
+
+.icoon {
+  padding: 20px;
+}
+
+.form_container {
+  text-align: center;
+}
+
+.first_wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.inputText {
+    cursor: text;
+}
