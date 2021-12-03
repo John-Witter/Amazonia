@@ -15,6 +15,8 @@ export default function ProductScreen(props) {
     const productDetails = useSelector(state => state.productDetails);
     const reviewsList = useSelector(state => state.reviewList);
     const usersReview = useSelector(state => state.oneReview)
+    const rating = useSelector(state => state.rating)
+
     const [qty, setQty] = useState(1)
     const [state, setState] = useState(false)
     const user = useSelector(state => state.users);
@@ -24,6 +26,7 @@ export default function ProductScreen(props) {
     const { loading, error, product } = productDetails;
     const { reviews } = reviewsList;
     const { review } = usersReview;
+    const { averageRating } = rating;
 
     const dispatch = useDispatch();
     const productId = props.match.params.id;
@@ -79,7 +82,7 @@ export default function ProductScreen(props) {
                                         <h1><b>{product.name}</b></h1>
                                     </li>
                                     <li style={{ borderBottom: "1px solid grey", paddingBottom: "5px" }}>
-                                        <Rating rating={Math.random() * 5} numReviews={product.numReviews} />
+                                        <Rating rating={averageRating} numReviews={product.numReviews} />
                                     </li>
                                     <li><b>Price :</b> ${product.price}</li>
                                     <li>
@@ -146,11 +149,11 @@ export default function ProductScreen(props) {
                         {loading ? (
                             <LoadingBox />
                         ) : review?.review ? (
-                            <div style={{fontSize:"1.6rem"}}>
+                            <div style={{ fontSize: "1.6rem" }}>
                                 Your Review
-                                <div style={{display:"inline"}}>
-                                <i onClick={() => alert("you are editing")} style={{cursor:"pointer",padding:"1.2rem"}} className="fas fa-pencil-alt"></i>
-                                <i onClick={() => alert("here we delete review")} style={{cursor:"pointer"}} className="fas fa-trash"></i>
+                                <div style={{ display: "inline" }}>
+                                    <i onClick={() => alert("you are editing")} style={{ cursor: "pointer", padding: "1.2rem" }} className="fas fa-pencil-alt"></i>
+                                    <i onClick={() => alert("here we delete review")} style={{ cursor: "pointer" }} className="fas fa-trash"></i>
                                 </div>
                                 <div style={{ borderBottom: "1px solid grey", fontSize: "1.5rem", padding: "2rem", margin: "1rem" }}>
                                     <div style={{ paddingBottom: "1rem" }}>
@@ -201,7 +204,7 @@ export default function ProductScreen(props) {
                                 </div>
                             </div>
                         </div> */}
-                        <div style={{fontSize:"1.8rem"}}>
+                        <div style={{ fontSize: "1.8rem" }}>
                             <b>All Reviews
                             </b>
                         </div>
@@ -211,7 +214,7 @@ export default function ProductScreen(props) {
                                     <div style={{ paddingBottom: "1rem" }}>
                                         <b>{user[each.userId - 1]?.username}</b>
                                     </div>
-                                    <div style={{paddingBottom: "1rem"}}>
+                                    <div style={{ paddingBottom: "1rem" }}>
                                         "{each.review}"
                                     </div>
                                     <div style={{ fontSize: "20px", color: "grey" }}>

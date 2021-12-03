@@ -5,7 +5,7 @@ import {
 } from "../constants/ratingConstants";
 
 export const oneRatingReducer = (
-    state = { loading: true, rating: {} },
+    state = { loading: true, averageRating: {} },
     action
 ) => {
     switch (action.type) {

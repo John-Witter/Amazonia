@@ -70,9 +70,9 @@ router.get('/:productId/review', restoreUser, asyncHandler(async function (req, 
                 userId: user.id
             }
         })
-    
+
         return res.json(review)
-        
+
     } catch (error) {
         return;
         console.log("ERROR: /:productId/review:", error);
@@ -107,7 +107,7 @@ router.get('/:productId/ratings', asyncHandler(async function (req, res) {
         attributes: [[Sequelize.fn('AVG', Sequelize.col('rating')), 'rating']],
     });
 
-    return res.json(rating)
+    return res.json(rating[0].dataValues.rating)
 }))
 
 
