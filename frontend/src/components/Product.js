@@ -3,16 +3,19 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { listAverageRating } from '../actions/ratingActions';
 import Rating from '../components/Rating'
+import LoadingBox from './LoadingBox';
+import MessageBox from './MessageBox';
 
 export default function Product(props) {
     const { product } = props;
+    const productList = useSelector(state => state.productList);
     const dispatch = useDispatch();
-    const rating = useSelector(state => state.rating)
-    const { averageRating } = rating;
-
+    const { loading, error, products } = productList;
+    const id = product.id
     useEffect(() => {
-        dispatch(listAverageRating(product.id))
-    }, [dispatch, product])
+        dispatch(listAverageRating(id))
+    }, [dispatch])
+    const rating = useSelector(state => state.rating)
 
     return (
         <div key={product.id} className="card">
@@ -23,7 +26,16 @@ export default function Product(props) {
                 <Link to={`/product/${product.id}`}>
                     <h2>{product.name}</h2>
                 </Link>
-                <Rating rating={averageRating == null ? 0 : averageRating } numReviews={product.numReviews}></Rating>
+                {loading ? (
+                    <LoadingBox></LoadingBox>
+                ) : error ? (
+                    <MessageBox variant="danger">{error}</MessageBox>
+                ) : (
+                    <>
+                        <Rating rating={rating.averageRating } numReviews={product.numReviews}></Rating>
+                    </>
+                )
+            }
                 <div className="price">Price: ${product.price}</div>
             </div>
         </div>

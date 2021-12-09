@@ -10,13 +10,10 @@ export const oneRatingReducer = (
 ) => {
     switch (action.type) {
         case RATING_ONE_REQUEST:
-            console.log("RATING REDUCER!!!!!!!!!!");
             return { loading: true };
         case RATING_ONE_SUCCESS:
-            console.log("RATING REDUCER!!!!!!!!!!");
             return { loading: false, averageRating: action.payload };
         case RATING_ONE_FAIL:
-            console.log("RATING REDUCER!!!!!!!!!!");
             return { loading: false, error: action.payload };
         default:
             return state;

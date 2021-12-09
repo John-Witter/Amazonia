@@ -6,7 +6,7 @@ export default function Rating(props) {
     return (
         <div className="rating">
             <span>
-                <i className={rating >= 1 ? "fa fa-star" : 'far fa-star'}></i>
+                <i className={rating >= 1 || rating === null ? "fa fa-star" : 'far fa-star'}></i>
             </span>
             <span>
                 <i className={rating >= 2 ? "fa fa-star" : 'far fa-star'}></i>

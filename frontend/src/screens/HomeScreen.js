@@ -134,7 +134,7 @@ export default function HomeScreen() {
                     <>
                         <div style={{ fontSize: "2rem", fontWeight: "bold" }}>More Products you might like</div>
                         <div className="rowsHome center">
-                            {productsFeatured?.map((item) => (
+                            {productsFeatured?.map((item, index) => (
                                 <Product key={item.id} product={item} />
                             ))}
                         </div>

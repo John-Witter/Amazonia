@@ -82,7 +82,7 @@ export default function ProductScreen(props) {
                                         <h1><b>{product.name}</b></h1>
                                     </li>
                                     <li style={{ borderBottom: "1px solid grey", paddingBottom: "5px" }}>
-                                        <Rating rating={averageRating} numReviews={product.numReviews} />
+                                        <Rating rating={averageRating === null ? 1 : averageRating} numReviews={product.numReviews} />
                                     </li>
                                     <li><b>Price :</b> ${product.price}</li>
                                     <li>
